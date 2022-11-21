@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dojos</title>
+    <style>
+        ul li a{
+            color: goldenrod;
+        }
+        
+    </style>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body class="w-70 p-3">
+    <div class="d-flex justify-content-around ">
+        <div class="mb-5 mt-5 p-3 h-25 bg-dark">
+            <h3 class="text-primary">New Dojo</h3>
+            <form action="/addDojo" method="post">
+                <div class="form-group">
+                    <label for="name" class="text-light">Name</label>
+                    <input type="text" class="form-control" name="name"  placeholder="Dojo Name">
+                </div>
+
+                <button type="submit" class="btn btn-primary">Create</button>
+            </form>
+        </div>
+        <div class="w-40 p-3 bg-dark">
+            <h3 class="text-center text-primary">All Dojos</h3>
+            <ul class="list-group">
+                {% for dojo in dojos %} 
+                <li class="list-group-item bg-dark"><a href="/dojos/{{dojo.id}}">{{dojo.name}}</a></li>
+                {% endfor %}
+            </ul>
+        </div>    
+        
+        
+    </div>
+    <div class="text-center">
+        <!-- when you press the button u trigger the add ninja route which it redirects to another page to add ninjas -->
+        <a href="/addNinja" class="btn btn-success btn-lg active" role="button" aria-pressed="true">Add Ninja</a>
+
+    </div>
+    
+</body>
+</html>
